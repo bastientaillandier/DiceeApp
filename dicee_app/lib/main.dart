@@ -11,7 +11,7 @@ void main() {
           title: Center(
             child: Text('Dicee'),
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.yellow,
         ),
         body: DicePage(),
       ),
@@ -38,25 +38,48 @@ class _DicePageState extends State<DicePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(children: [
-        Expanded(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(children: [
+          Expanded(
+            child: TextButton(
+              child: Image.asset('images/dice$leftDiceNumber.png'),
+              onPressed: () {
+                setState(() {
+                  leftDiceNumber = Random().nextInt(6) + 1;
+                });
+              },
+            ),
+          ),
+          Expanded(
+            child: TextButton(
+              child: Image.asset('images/dice$rightDiceNumber.png'),
+              onPressed: () {
+                setState(() {
+                  rightDiceNumber = Random().nextInt(6) + 1;
+                });
+              },
+            ),
+          ),
+        ]),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
           child: TextButton(
-            child: Image.asset('images/dice$leftDiceNumber.png'),
             onPressed: () {
               randomNumbers();
             },
+            child: const Text(
+              'Press here to rerol both',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
           ),
-        ),
-        Expanded(
-          child: TextButton(
-            child: Image.asset('images/dice$rightDiceNumber.png'),
-            onPressed: () {
-              randomNumbers();
-            },
-          ),
-        ),
-      ]),
+        )
+      ],
     );
   }
 }
