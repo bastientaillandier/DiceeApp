@@ -8,12 +8,12 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Center(
-            child: Text('Dicee'),
+          title: const Center(
+            child: const Text('Dicee'),
           ),
           backgroundColor: Colors.yellow,
         ),
-        body: DicePage(),
+        body: const DicePage(),
       ),
     ),
   );
